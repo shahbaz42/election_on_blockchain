@@ -38,7 +38,7 @@ App = {
         fromBlock: 0,
         toBlock: 'latest'
       }).watch(function(error, event) {
-        console.log("event triggered", event)
+        // console.log("event triggered", event)
         // Reload when a new vote is recorded
         //App.render();
       });
@@ -46,7 +46,7 @@ App = {
   },
 
   render: function() {
-    console.log("Call rendered fxn");
+    // console.log("Call rendered")
     var electionInstance;
     var loader = $("#loader");
     var content = $("#content");
@@ -82,7 +82,7 @@ App = {
           // Render candidate Result
           var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + voteCount + "</td></tr>"
           candidatesResults.append(candidateTemplate);
-          console.log("rendered")
+          // console.log("rendered")
 
           // Render candidate ballot option
           var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
