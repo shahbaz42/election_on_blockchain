@@ -7,5 +7,5 @@ Etherium Decentralized App for elections.
 
 ## Requirements:
   1. Metamask must be installed
-  2. You must be connected with DLT Labs DL Testnet
+  2. You must be connected to DLT Labs DL Testnet
 
