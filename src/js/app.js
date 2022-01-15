@@ -9,7 +9,7 @@ App = {
   },
 
   initWeb3: function() {
-    if (typeof web3 !== 'undefined') { // If a web3 instance is already provided by Meta Mask.
+    if (typeof window.ethereum !== 'undefined') { // If a web3 instance is already provided by Meta Mask.
       App.web3Provider = web3.currentProvider;
       web3 = new Web3(web3.currentProvider);
     } else {
@@ -40,12 +40,13 @@ App = {
       }).watch(function(error, event) {
         console.log("event triggered", event)
         // Reload when a new vote is recorded
-        App.render();
+        //App.render();
       });
     });
   },
 
   render: function() {
+    console.log("Call rendered fxn");
     var electionInstance;
     var loader = $("#loader");
     var content = $("#content");
@@ -71,8 +72,8 @@ App = {
 
       var candidatesSelect = $('#candidatesSelect');
       candidatesSelect.empty();
-
-      for (var i = 1; i <= candidatesCount; i++) {
+      console.log(candidatesCount.toNumber());
+      for (var i = 1; i <= candidatesCount.toNumber() ; i++) {
         electionInstance.candidates(i).then(function(candidate) {
           var id = candidate[0];
           var name = candidate[1];
@@ -81,6 +82,7 @@ App = {
           // Render candidate Result
           var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + voteCount + "</td></tr>"
           candidatesResults.append(candidateTemplate);
+          console.log("rendered")
 
           // Render candidate ballot option
           var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
