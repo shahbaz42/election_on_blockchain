@@ -104,6 +104,7 @@ App = {
   },
 
   castVote: function() {
+    alert("Please confirm the transaction in Metamask.");
     var candidateId = $('#candidatesSelect').val();
     App.contracts.Election.deployed().then(function(instance) {
       return instance.vote(candidateId, { from: App.account });
@@ -111,6 +112,10 @@ App = {
       // Wait for votes to update
       $("#content").hide();
       $("#loader").show();
+      alert("You have sucessfully voted");
+      setTimeout(()=>{
+        window.location.reload();
+      }, 5000)
     }).catch(function(err) {
       console.error(err);
     });
